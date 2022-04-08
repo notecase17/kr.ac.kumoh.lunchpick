@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LunchPick">
         <activity
+            android:name=".contentsList.ContentsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".CustomerSignUpActivity"
             android:exported="false" />
         <activity
