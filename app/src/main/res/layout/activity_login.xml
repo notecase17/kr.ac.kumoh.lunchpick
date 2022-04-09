@@ -7,38 +7,43 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <TextView
+    <ImageView
         android:id="@+id/tvAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LunchPick"
+        android:layout_width="172dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/lunchpick_logo_black"
+        app:layout_constraintBottom_toTopOf="@id/tvService"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvService"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="115dp"
-        android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/editUserId"
+        android:layout_marginTop="194dp"
+        android:textSize="33sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:text="로그인"
+        app:layout_constraintBottom_toTopOf="@id/editUserId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
+        app:layout_constraintTop_toTopOf="parent
+" />
 
     <EditText
         android:id="@+id/editUserId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="267dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="User name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvService" />
 
     <EditText
         android:id="@+id/editUserPw"
@@ -49,48 +54,55 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editUserId" />
+        app:layout_constraintTop_toBottomOf="@id/editUserId" />
 
     <TextView
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:textSize="12sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="78dp"
         android:text="회원가입"
-        app:layout_constraintEnd_toStartOf="@+id/btnFindUserId"
+        app:layout_constraintEnd_toStartOf="@id/btnFindUserId"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnFindUserId" />
+        app:layout_constraintTop_toBottomOf="@id/editUserPw" />
 
     <TextView
         android:id="@+id/btnFindUserId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="136dp"
-        android:text="아이디"
-        app:layout_constraintEnd_toEndOf="@+id/editUserPw"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editUserPw" />
+        android:textSize="12sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="146dp"
+        android:text="아이디/"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSignUp"
+        app:layout_constraintTop_toBottomOf="@id/editUserPw" />
 
     <TextView
         android:id="@+id/btnFindUserPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
+        android:textSize="12sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="135dp"
         android:text="비밀번호 찾기"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnFindUserId"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editUserPw" />
 
     <Button
         android:id="@+id/btnLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:background="@drawable/btn_blue"
         android:text="로그인"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFindUserId" />
+        app:layout_constraintTop_toBottomOf="@id/editUserPw" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

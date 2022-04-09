@@ -30,10 +30,12 @@ class LoginActivity : AppCompatActivity() {
             if (userid.isNotEmpty() && userpw.isNotEmpty()){
 
                 //  check id, pw.
-                //  입력된 id, pw를 db에 쿼리로 전송하여 확인
+                //  입력된 id, pw를 db에 쿼리로 검색
                 //  id, pw가 일치한다면 다음 액티비티로 이동
 
                 Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
 
