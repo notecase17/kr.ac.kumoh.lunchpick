@@ -53,4 +53,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/CenterLogo"
         ></TextView>
+
+    <TextView
+        android:id="@+id/From"
+        android:layout_width="100dp"
+        android:layout_height="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        ></TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
