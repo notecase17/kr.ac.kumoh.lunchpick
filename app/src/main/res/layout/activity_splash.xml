@@ -8,28 +8,33 @@
 
     <ImageView
         android:id="@+id/TopImage"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/food_img_001"
         app:layout_constraintBottom_toTopOf="@id/BottomImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        ></ImageView>
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <ImageView
         android:id="@+id/BottomImage"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/food_img_002"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TopImage"
-        ></ImageView>
+        app:layout_constraintTop_toBottomOf="@id/TopImage"></ImageView>
 
     <ImageView
         android:id="@+id/CenterLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/lunchpick_center_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +43,13 @@
 
     <TextView
         android:id="@+id/TextTop"
-        android:layout_width="100dp"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffff"
+        android:fontFamily="@font/fontstyle"
+        android:text="오늘 점심 뭐 먹을까?"
         app:layout_constraintBottom_toTopOf="@id/CenterLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +57,13 @@
 
     <TextView
         android:id="@+id/TextBottom"
-        android:layout_width="100dp"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffff"
+        android:fontFamily="@font/fontstyle"
+        android:text="밥 때 만을 기다렸다"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/CenterLogo"
@@ -56,8 +71,14 @@
 
     <TextView
         android:id="@+id/From"
-        android:layout_width="100dp"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="20sp"
+        android:textColor="#ffff"
+        android:gravity="center"
+        android:fontFamily="@font/fontstyle"
+        android:text="From.\nK.O.T"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
