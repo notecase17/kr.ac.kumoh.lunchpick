@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="food_img">
+        <item>@drawable/food_img_001</item>
+        <item>@drawable/food_img_002</item>
+        <item>@drawable/food_img_003</item>
+        <item>@drawable/food_img_004</item>
+        <item>@drawable/food_img_005</item>
+        <item>@drawable/food_img_006</item>
+        <item>@drawable/food_img_007</item>
+        <item>@drawable/food_img_008</item>
+        <item>@drawable/food_img_009</item>
+        <item>@drawable/food_img_010</item>
+        <item>@drawable/food_img_011</item>
+        <item>@drawable/food_img_012</item>
+    </array>
+</resources>
