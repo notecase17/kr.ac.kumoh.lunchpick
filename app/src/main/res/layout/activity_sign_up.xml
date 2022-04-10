@@ -175,40 +175,7 @@
         app:layout_constraintTop_toBottomOf="@id/editName"
         app:layout_constraintStart_toEndOf="@id/tvAge"
         />
-    <!-- 성별 선택 - 라디오 버튼 사용
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RadioGroup
-                android:id="@+id/gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rbMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="남자"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvService"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-                <RadioButton
-                    android:id="@+id/rbFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="여자"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvService"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-            </RadioGroup>
-        </LinearLayout>
-        -->
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="wrap_content"
