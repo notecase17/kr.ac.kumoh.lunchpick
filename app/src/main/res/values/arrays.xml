@@ -14,4 +14,9 @@
         <item>@drawable/food_img_011</item>
         <item>@drawable/food_img_012</item>
     </array>
+
+    <string-array name="gender">
+        <item>남성</item>
+        <item>여성</item>
+    </string-array>
 </resources>
