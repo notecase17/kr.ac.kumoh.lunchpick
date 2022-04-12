@@ -23,7 +23,7 @@ class ContentsListActivity : AppCompatActivity() {
             "후라이드참잘하는집 옥계점","경상북도 구미시 옥계동 731-1 1층"))
 
 
-        val rvAdapter = ContentsRVAdapter(items)
+        val rvAdapter = ContentsRVAdapter(baseContext, items)
         rv.adapter = rvAdapter
 
         rv.layoutManager = LinearLayoutManager(this)
