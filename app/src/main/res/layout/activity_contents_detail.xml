@@ -1,32 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:background="#00FFFFFF"
+    app:umanoDragView="@id/drawer"
+    app:umanoPanelHeight="300dp"
+    app:umanoShadowHeight="4dp"
+    app:umanoOverlay="true"
     tools:context=".contentsList.ContentsDetailActivity">
 
-    <TextView
-        android:id="@+id/DetailName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="12dp"
-        android:background="#4FD6BD"
-        android:textColor="@color/white"
-        android:textSize="33dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/DetailImage"
-        android:text="가게 이름"
-        />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/DetailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="12dp"
+            android:background="#4FD6BD"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:text="가게 이름"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/DetailImage"
+    <LinearLayout
+        android:id="@+id/drawer"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:layout_constraintTop_toBottomOf="@+id/DetailName"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:layout_height="600dp"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/DetailImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintTop_toBottomOf="@+id/DetailName"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+    </LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

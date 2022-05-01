@@ -5,14 +5,19 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kr.ac.kumoh.lunchpick.R
+import kr.ac.kumoh.lunchpick.databinding.ActivityContentsDetailBinding
+import kr.ac.kumoh.lunchpick.databinding.ActivityLoginBinding
 
 class ContentsDetailActivity : AppCompatActivity() {
     lateinit var datas : ContentsModel
+    private lateinit var binding: ActivityContentsDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contents_detail)
+        binding= ActivityContentsDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val detail_store_image = findViewById<ImageView>(R.id.DetailImage)
         val detail_store_name = findViewById<TextView>(R.id.DetailName)
