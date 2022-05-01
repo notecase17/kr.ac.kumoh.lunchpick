@@ -17,7 +17,6 @@
             android:layout_height="45dp"
             android:textColor="#FFFFFF"
             android:gravity="center_horizontal"
-            android:paddingTop="4dp"
             android:background="#4FD6BD"
             android:textStyle="bold"
             android:textSize="28sp"
@@ -58,7 +57,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="70dp"
                 android:textSize="30sp"
-                android:textColor="#0F0F0F"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:text="음식 이름"/>
         </FrameLayout>
