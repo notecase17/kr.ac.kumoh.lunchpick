@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.ac.kumoh.lunchpick.R
 
 class ContentsListActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contents_list)
