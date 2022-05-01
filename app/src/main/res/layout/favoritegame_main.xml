@@ -55,9 +55,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="70dp"
+                android:layout_marginBottom="59dp"
+                android:layout_marginRight="92dp"
                 android:textSize="30sp"
                 android:textColor="#FFFFFF"
+                android:background="#0F0F0F"
                 android:textStyle="bold"
                 android:text="음식 이름"/>
         </FrameLayout>
@@ -87,14 +89,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="97dp"
                 android:textSize="30sp"
-                android:textColor="#0F0F0F"
+                android:textColor="#FFFFFF"
+                android:background="#0F0F0F"
                 android:textStyle="bold"
                 android:text="음식 이름"/>
         </FrameLayout>
 
         <TextView
+            android:id="@+id/tv_vs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
