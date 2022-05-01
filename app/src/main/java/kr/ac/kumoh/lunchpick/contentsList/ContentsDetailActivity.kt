@@ -2,6 +2,7 @@ package kr.ac.kumoh.lunchpick.contentsList
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -40,9 +41,9 @@ class ContentsDetailActivity : AppCompatActivity() {
 
         // 패널의 상태가 변했을 때
         override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
-            if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+            if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) { // 닫혔을 때
 
-            } else if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+            } else if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) { // 열렸을 때
 
             }
         }
