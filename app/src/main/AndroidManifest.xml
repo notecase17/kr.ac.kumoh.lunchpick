@@ -10,16 +10,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LunchPick">
+        android:theme="@style/Theme.LunchPick"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".contentsList.ContentsDetailActivity"
             android:exported="false" />
         <activity
             android:name=".contentsList.ContentsListActivity"
             android:exported="false" />
-        <activity
-            android:name=".CustomerSignUpActivity"
-            android:exported="false" />
+
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
