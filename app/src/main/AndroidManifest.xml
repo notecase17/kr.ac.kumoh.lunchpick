@@ -17,9 +17,7 @@
         <activity
             android:name=".contentsList.ContentsListActivity"
             android:exported="false" />
-        <activity
-            android:name=".CustomerSignUpActivity"
-            android:exported="false" />
+
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
@@ -39,6 +37,10 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".GameActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

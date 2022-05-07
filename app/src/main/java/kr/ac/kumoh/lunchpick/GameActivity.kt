@@ -4,15 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kr.ac.kumoh.lunchpick.databinding.ActivityGameBinding
 import java.io.Serializable
-import kr.ac.kumoh.lunchpick.databinding.ActivityGameMainBinding
 
 data class food (
     var name: String
 ) : Serializable
 
 class GameActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityGameMainBinding
+    private lateinit var binding : ActivityGameBinding
     var idnt = Array<food?>(32) {null}
     var count = 0
     var c_count = 0
@@ -20,7 +20,7 @@ class GameActivity : AppCompatActivity() {
     var n_round = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGameMainBinding.inflate(layoutInflater)
+        binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val fd1 = food("초밥")
