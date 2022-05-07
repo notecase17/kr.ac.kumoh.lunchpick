@@ -36,26 +36,26 @@
         />
 
     <TextView
-        android:id="@+id/tvId"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="30dp"
         android:text="아이디"
         app:layout_constraintTop_toBottomOf="@id/tvService"
-        app:layout_constraintBottom_toTopOf="@id/editUserId"
+        app:layout_constraintBottom_toTopOf="@id/editUserName"
         app:layout_constraintStart_toStartOf="parent"
         />
 
     <EditText
-        android:id="@+id/editUserId"
+        android:id="@+id/editUserName"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:hint="아이디를 입력해주세요."
-        app:layout_constraintTop_toBottomOf="@id/tvId"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
         app:layout_constraintStart_toStartOf="parent"
         />
 
@@ -66,7 +66,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
         android:text="비밀번호"
-        app:layout_constraintTop_toBottomOf="@id/editUserId"
+        app:layout_constraintTop_toBottomOf="@id/editUserName"
         app:layout_constraintStart_toStartOf="parent"
         />
 
@@ -106,7 +106,7 @@
         />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -124,7 +124,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="닉네임"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tv"
         app:layout_constraintStart_toStartOf="parent"
         />
 
@@ -163,6 +163,7 @@
         app:layout_constraintStart_toEndOf="@id/spGender"
         app:layout_constraintEnd_toStartOf="@id/editAge"
         />
+
     <EditText
         android:id="@+id/editAge"
         android:layout_width="97dp"
