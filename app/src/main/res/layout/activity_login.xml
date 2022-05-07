@@ -27,14 +27,14 @@
         android:textColor="#000000"
         android:textStyle="bold"
         android:text="로그인"
-        app:layout_constraintBottom_toTopOf="@id/editUserName"
+        app:layout_constraintBottom_toTopOf="@id/editStoreName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent
 " />
 
     <EditText
-        android:id="@+id/editUserName"
+        android:id="@+id/editStoreName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -54,7 +54,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editUserName" />
+        app:layout_constraintTop_toBottomOf="@id/editStoreName" />
 
     <TextView
         android:id="@+id/btnSignUp"
