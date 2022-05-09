@@ -5,7 +5,7 @@
     android:layout_height="100dp"
     android:orientation="horizontal">
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/imageArea"
         android:src="@drawable/fried_chiken_well"
         android:padding="10dp"

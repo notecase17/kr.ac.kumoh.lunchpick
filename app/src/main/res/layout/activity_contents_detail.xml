@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contentsList.ContentsDetailActivity">
+    tools:context=".contentsList.ContentsDetailActivity"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/DetailName"
@@ -14,17 +15,38 @@
         android:gravity="center"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:background="@color/skyblue"
-        android:textColor="@color/white"
+        android:background="@color/white"
+        android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/DetailImage"
-        android:text="아무거나"/>
+        android:text="하기싫엉~"/>
 
     <ImageView
         android:id="@+id/DetailImage"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         app:layout_constraintTop_toBottomOf="@+id/DetailName"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
+    <TextView
+        android:id="@+id/DetailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/DetailImage" />
+    <TextView
+        android:id="@+id/DetailNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/DetailAddress" />
 </androidx.constraintlayout.widget.ConstraintLayout>
