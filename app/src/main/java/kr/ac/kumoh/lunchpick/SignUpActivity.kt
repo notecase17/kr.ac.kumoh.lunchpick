@@ -62,7 +62,8 @@ class SignUpActivity : AppCompatActivity() {
             val userAge = binding.editAge.text.toString()
 
             if (signUpCheck(userId, userPw1, userPw2, userName, userAge)) {
-                signupVolley(this, url, userId, userPw1, userName, userAge, userGender)
+
+                //signupVolley(this, url, userId, userPw1, userName, userAge, userGender)
                 Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
             }
 
