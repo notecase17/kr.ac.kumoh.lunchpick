@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LunchPick"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:name=".SharedPreference.LocalUser">
         <activity
             android:name=".contentsList.ContentsDetailActivity"
             android:exported="false" />
