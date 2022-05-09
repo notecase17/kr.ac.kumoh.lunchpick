@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
 import kr.ac.kumoh.lunchpick.databinding.ActivitySignUpBinding
 import org.json.JSONException
 import org.json.JSONObject
@@ -64,6 +65,16 @@ class SignUpActivity : AppCompatActivity() {
             if (signUpCheck(userId, userPw1, userPw2, userName, userAge)) {
 
                 //signupVolley(this, url, userId, userPw1, userName, userAge, userGender)
+
+                LocalUser.prefs.setString("id", userId)
+                LocalUser.prefs.setString("pw", userPw1)
+                LocalUser.prefs.setString("name", userName)
+                LocalUser.prefs.setString("age", userAge)
+                LocalUser.prefs.setString("gender", userGender)
+
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
                 Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
             }
 

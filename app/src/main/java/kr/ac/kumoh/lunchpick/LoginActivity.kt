@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
 import kr.ac.kumoh.lunchpick.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -20,8 +21,8 @@ class LoginActivity : AppCompatActivity() {
         //  click login btn
         binding.btnLogIn.setOnClickListener {
 
-            userid=binding.editUserId.text.toString().trim()
-            userpw=binding.editUserPw.text.toString().trim()
+            userid=binding.editUserId.text.toString()
+            userpw=binding.editUserPw.text.toString()
 
             if (userid.isEmpty())
                 Toast.makeText(this, "아이디를 입력해주세요!", Toast.LENGTH_SHORT).show()
@@ -33,9 +34,10 @@ class LoginActivity : AppCompatActivity() {
                 //  입력된 id, pw를 db에 쿼리로 검색
                 //  id, pw가 일치한다면 다음 액티비티로 이동
 
-                Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, GameActivity::class.java)
-                startActivity(intent)
+                if (loginCheck(userid, userpw)) {
+                    val intent = Intent(this, GameActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 
@@ -45,5 +47,20 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun loginCheck(id: String, pw: String) : Boolean {
+        if (id != LocalUser.prefs.getString("id", "")) {
+            Toast.makeText(this, "일치하는 아이디가 없습니다.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        else if (pw != LocalUser.prefs.getString("pw", "")) {
+            Toast.makeText(this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        else {
+            Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
+            return true
+        }
     }
 }
