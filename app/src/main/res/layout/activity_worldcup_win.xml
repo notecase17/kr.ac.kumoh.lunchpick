@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4FD6BD">
+
+    <TextView
+        android:id="@+id/tv_activityName"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:background="#FFFFFF"
+        android:textColor="#404040"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:text="★우승 결과★"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            android:elevation="40dp"
+            android:background="@drawable/whiteBox_round"/>
+        <ImageView
+            android:id="@+id/iv_foodImg"
+            android:layout_width="268dp"
+            android:layout_height="190dp"
+            android:layout_marginBottom="42dp"
+            android:layout_gravity="center"
+            android:src="@drawable/food_img_003"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_gravity="center"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="#0F0F0F"
+            android:text="음식 이름"/>
+    </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:background="@drawable/whiteBox_round"
+        android:elevation="30dp"
+        android:textColor="#0F0F0F"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="주변 식당 >"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

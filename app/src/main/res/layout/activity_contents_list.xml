@@ -8,15 +8,16 @@
     tools:context=".contentsList.ContentsListActivity">
 
     <TextView
+        android:id="@+id/tv_activityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="근처 국수 식당"
+        android:text="내 주변 식당"
         android:textSize="30dp"
         android:textStyle="bold"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@color/skyblue"
+        android:background="#4FD6BD"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +27,11 @@
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp" />
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_activityName"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

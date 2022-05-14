@@ -22,7 +22,10 @@ class SignUpActivity : AppCompatActivity() {
 
     private var isBlank = false
     private var isPwSame = false
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     private lateinit var userGender: String
 
     private lateinit var binding: ActivitySignUpBinding
@@ -32,9 +35,16 @@ class SignUpActivity : AppCompatActivity() {
         binding= ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+<<<<<<< Updated upstream
         binding.spGender.adapter = ArrayAdapter<String>(this,
             android.R.layout.simple_spinner_dropdown_item,
             resources.getStringArray(R.array.gender))
+=======
+        var item_gender = resources.getStringArray(R.array.gender)
+        var spinnerAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, item_gender)
+
+        binding.spGender.adapter = spinnerAdapter
+>>>>>>> Stashed changes
         binding.spGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -54,6 +64,19 @@ class SignUpActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
+<<<<<<< Updated upstream
+=======
+
+
+        /* 라디오 버튼 사용 시 코드
+        binding.gender.setOnCheckedChangeListener { group, checkId ->
+            when(checkId) {
+                R.id.rbMale -> userGender = "남"
+                R.id.rbFemale -> userGender = "여"
+            }
+        }
+        */
+>>>>>>> Stashed changes
 
         binding.btnSignUp.setOnClickListener {
             val userId = binding.editUserId.text.toString()

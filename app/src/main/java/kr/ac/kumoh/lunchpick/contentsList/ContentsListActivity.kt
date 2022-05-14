@@ -13,11 +13,14 @@ import kotlin.properties.ReadOnlyProperty
 
 class ContentsListActivity : AppCompatActivity() {
 
+<<<<<<< HEAD
+=======
     private lateinit var binding: ActivityContentsListBinding
     private val store: StoreViewModel by viewModels()
     private lateinit var adapter: ContentsRVAdapter
 
 
+>>>>>>> 309777ad89f4562ac6113e74ef65f92331960325
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContentsListBinding.inflate(layoutInflater)
