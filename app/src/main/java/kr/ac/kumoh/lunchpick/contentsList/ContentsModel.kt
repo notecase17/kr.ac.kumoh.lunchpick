@@ -5,7 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ContentsModel (
-        val imageUrl : String ="",
-        val storeName : String = "",
-        val storeAddress : String = ""
+        val ownerId: String = "",
+        val storeId: Int,
+        val storeName: String = "",
+        val storeAddress: String = "",
+        val storeNum: String = "",
+        val image: String = ""
 ) : Parcelable

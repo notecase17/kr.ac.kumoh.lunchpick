@@ -12,7 +12,8 @@
     app:umanoPanelHeight="300dp"
     app:umanoShadowHeight="4dp"
     app:umanoOverlay="true"
-    tools:context=".contentsList.ContentsDetailActivity">
+    tools:context=".contentsList.ContentsDetailActivity"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,14 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="12dp"
-            android:background="#4FD6BD"
-            android:textColor="@color/white"
-            android:textSize="32dp"
-            android:textStyle="bold"
-            android:text="가게 이름"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/DetailImage"
+            android:text="하기싫엉~"/>
 
         <RelativeLayout
             android:id="@+id/map_view"

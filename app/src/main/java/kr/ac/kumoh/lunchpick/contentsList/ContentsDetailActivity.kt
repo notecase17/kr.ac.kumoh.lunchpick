@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kr.ac.kumoh.lunchpick.R
@@ -13,8 +14,11 @@ import kr.ac.kumoh.lunchpick.databinding.ActivityLoginBinding
 
 class ContentsDetailActivity : AppCompatActivity() {
     lateinit var datas : ContentsModel
+<<<<<<< HEAD
     private lateinit var binding: ActivityContentsDetailBinding
 
+=======
+>>>>>>> 309777ad89f4562ac6113e74ef65f92331960325
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityContentsDetailBinding.inflate(layoutInflater)
@@ -23,13 +27,20 @@ class ContentsDetailActivity : AppCompatActivity() {
         val slidePanel = binding.sliding_layout
         sliding_layout.addPanelSlideListener(PanelEventListener())  // 이벤트 리스너 추가
 
+        val SERVER_URL = "https://csproject-qejmc.run.goorm.io/"
         val detail_store_image = findViewById<ImageView>(R.id.DetailImage)
         val detail_store_name = findViewById<TextView>(R.id.DetailName)
+        val detail_store_addr = findViewById<TextView>(R.id.DetailAddress)
+        val detail_store_num = findViewById<TextView>(R.id.DetailNum)
 
         datas = intent.getParcelableExtra("data")!!
 
-        Glide.with(this).load(datas.imageUrl).into(detail_store_image)
+        Toast.makeText(this,datas.image, Toast.LENGTH_SHORT).show()
+
+        Glide.with(this).load("${SERVER_URL}images/${datas.image}").into(detail_store_image)
         detail_store_name.text = datas.storeName
+        detail_store_addr.text = datas.storeAddress
+        detail_store_num.text = "가게 번호 : ${datas.storeNum}"
     }
 
     // 이벤트 리스너
