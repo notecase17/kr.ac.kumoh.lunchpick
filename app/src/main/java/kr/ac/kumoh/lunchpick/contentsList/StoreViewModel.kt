@@ -24,9 +24,14 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
 
     val storeList = MutableLiveData<ArrayList<ContentsModel>>()
     private val store = ArrayList<ContentsModel>()
+    //추가
+    val storeMenuList = MutableLiveData<ArrayList<MenusModel>>()
+    private val menu = ArrayList<MenusModel>()
 
     init {
         storeList.value = store
+        //추가
+        storeMenuList.value = menu
         //서버 요청 queue
         mQueue = VolleyRequest.getInstance(application).requestQueue
         //Volley 이미지 로더
@@ -39,6 +44,9 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getStore(i: Int) = store[i]
     fun getSize() = store.size
+    //추가
+    fun getMenu(i: Int) = menu[i]
+    fun getMenuSize() = menu.size
 
     fun requestStoreList() {
 
@@ -61,6 +69,28 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
         mQueue.add(request)
 
     }
+    //추가
+    fun requestStoreMenuList() {
+
+        val url = "https://csproject-qejmc.run.goorm.io/StoreMenu"
+
+        val request = JsonArrayRequest(
+            Request.Method.GET,url,null,
+            {
+                //Toast.makeText(getApplication(),it.toString(), Toast.LENGTH_LONG).show()
+                store.clear()
+                parseMenuJSON(it)
+                storeMenuList.value = menu
+            },
+            {
+                Toast.makeText(getApplication(),it.toString(), Toast.LENGTH_LONG).show()
+                //binding.result.text = it.toString()
+            }
+        )
+        request.tag = QUEUE_TAG
+        mQueue.add(request)
+
+    }
     private fun parseStoreJSON(items: JSONArray) {
         for (i in 0 until items.length()) {
             val item: JSONObject = items.getJSONObject(i)
@@ -72,6 +102,21 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
             val image = item.getString("store_image")
 
             store.add(ContentsModel(o_id, s_id, name, addr, num, image))
+        }
+    }
+    //추가
+    private fun parseMenuJSON(items: JSONArray) {
+        var temp=3
+        for (i in 0 until items.length()) {
+            val item: JSONObject = items.getJSONObject(i)
+            if(temp == item.getInt("store_ID"))
+            {
+                val m_id = item.getInt("storeMenu_ID")
+                val s_id = item.getInt("store_ID")
+                val name = item.getString("store_Menu")
+                val image = item.getString("image")
+                menu.add(MenusModel(m_id, s_id, name, image))
+            }
         }
     }
 
