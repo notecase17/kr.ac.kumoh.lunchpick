@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".GameActivity">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -18,25 +17,35 @@
             android:gravity="top|center_horizontal"
             />
 
-        <Button
-            android:id="@+id/showImage"
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/FirstImage"
             android:layout_width="match_parent"
+            android:layout_height="295dp"
             android:backgroundTint="#000000"
-            android:textColor="#FFFFFF"
-            android:gravity="bottom|center_horizontal"
-            android:text="name"
-            android:layout_marginTop="40dp"
-            android:layout_height="345dp" />
+            android:gravity="bottom|center_horizontal" />
 
-        <Button
-            android:id="@+id/showImage2"
+        <TextView
+            android:id="@+id/FItext"
             android:layout_width="match_parent"
-            android:layout_height="345dp"
-            android:layout_marginTop="385dp"
+            android:layout_height="30dp"
             android:gravity="bottom|center_horizontal"
             android:text="name"/>
 
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/secondImage"
+            android:layout_width="match_parent"
+            android:layout_height="295dp"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="#000000"
+            android:gravity="bottom|center_horizontal"
+            />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/SItext"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="bottom|center_horizontal"
+            android:text="name"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

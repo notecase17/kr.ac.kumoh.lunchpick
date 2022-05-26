@@ -18,13 +18,41 @@
             android:text="wfn"
             />
 
-        <Button
-            android:id="@+id/winner_food"
+        <ImageView
+            android:id="@+id/WFimage"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:layout_marginTop="0dp"
-            android:gravity="bottom|center_horizontal"
-            android:text="name"/>
+            android:layout_height="450dp"
+            android:layout_marginTop="35dp"
+            android:gravity="bottom|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/WF_text"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="bottom|center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/WFR"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_width="165dp"
+                android:layout_height="120dp"
+                android:text="주변 음식점\n찾으러가기"/>
+
+            <Button
+                android:id="@+id/Go_Front"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_width="165dp"
+                android:layout_height="120dp"
+                android:text="메인화면으로\n돌아가기"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
