@@ -47,6 +47,32 @@ class GameActivity : AppCompatActivity() {
         request.tag = QUEUE_TAG
         mqueue.add(request)
     }
+    fun requestStore() {
+        val url = "https://csproject-qejmc.run.goorm.io/Restaurant"
+        val request = JsonObjectRequest(
+            Request.Method.GET,
+            url, null,
+            { response ->
+                mResult = response
+                makestore() },
+            { error ->
+                Toast.makeText(this,error.toString(),Toast.LENGTH_LONG).show()
+            })
+
+        request.tag = QUEUE_TAG
+        mqueue.add(request)
+    }
+    fun makestore() {
+        val items: JSONArray = mResult?.getJSONArray("menu_ID") ?: return
+        mArray.clear()
+        for (i in 0 until items!!.length()){
+            val item = items[i] as JSONObject
+            val name = item.getString("store_name")
+            val ima = item.getString("store_image")
+            mArray.add(food(name,ima))
+            getit[i] = mArray[i]
+        }
+    }
 
     fun makesel() {
         val items: JSONArray = mResult?.getJSONArray("menu_ID") ?: return
@@ -61,6 +87,7 @@ class GameActivity : AppCompatActivity() {
     }
     val SERVER_URL = "https://csproject-qejmc.run.goorm.io/"
     var idnt = Array<food?>(32) {null}
+    var getit = Array<food?>(999) {null}
     var count = 0
     var c_count = 0
     var round = 0
@@ -68,19 +95,22 @@ class GameActivity : AppCompatActivity() {
     var size = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mqueue = Volley.newRequestQueue(this)
-        requestMenu()
+        requestStore()
 
         c_count = size
         round = size
 
-        Glide.with(this).load("${SERVER_URL}image/${idnt[count]!!.ima}").into(binding.FirstImage)
+        for(i in 0 until size){
+            idnt[i] = getit[i]
+        }
+
+        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.FirstImage)
         binding.FItext.text = idnt[count++]!!.name
-        Glide.with(this).load("${SERVER_URL}image/${idnt[count]!!.ima}").into(binding.secondImage)
+        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.secondImage)
         binding.SItext.text = idnt[count++]!!.name
         binding.progressing.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
 
@@ -111,9 +141,9 @@ class GameActivity : AppCompatActivity() {
             finish()
         }
         else{
-            Glide.with(this).load("${SERVER_URL}image/${idnt[count]!!.ima}").into(binding.FirstImage)
+            Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.FirstImage)
             binding.FItext.text = idnt[count++]!!.name
-            Glide.with(this).load("${SERVER_URL}image/${idnt[count]!!.ima}").into(binding.secondImage)
+            Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.secondImage)
             binding.SItext.text = idnt[count++]!!.name
             when (round) {
                 4 -> {

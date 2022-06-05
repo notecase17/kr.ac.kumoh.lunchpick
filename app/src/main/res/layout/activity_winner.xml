@@ -45,7 +45,7 @@
                 android:text="주변 음식점\n찾으러가기"/>
 
             <Button
-                android:id="@+id/Go_Front"
+                android:id="@+id/GoFront"
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="30dp"
                 android:layout_width="165dp"
