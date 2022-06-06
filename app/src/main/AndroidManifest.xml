@@ -13,9 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LunchPick"
         android:usesCleartextTraffic="true">
-
         <activity
-            android:name=".SettingActivity"
+            android:name=".MyPageActivity"
             android:exported="false" />
         <activity
             android:name=".contentsList.ContentsDetailActivity"
@@ -45,6 +44,7 @@
         <activity
             android:name=".GameActivity"
             android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAH1jtK11SwWF7QyHBO22WX_8FXDGFM2J8" />

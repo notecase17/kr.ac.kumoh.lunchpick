@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/imageArea"
+        android:src="@drawable/fried_chiken_well"
+        android:padding="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_FoodName"
+            android:text="음식 이름"
+            android:textSize="20sp"
+            android:textColor="#0F0F0F"
+            android:layout_marginTop="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="삭제"
+        android:layout_marginRight="3dp"
+        />
+</LinearLayout>

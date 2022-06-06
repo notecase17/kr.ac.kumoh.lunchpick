@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         //  move to data setting
         binding.tvSettings.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
+            val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
         }
 
