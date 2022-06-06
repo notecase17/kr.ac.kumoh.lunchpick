@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Lunch_Pick.iml" filepath="$PROJECT_DIR$/.idea/modules/Lunch_Pick.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lunch_Pick.app.unitTest.iml" />
     </modules>
   </component>
 </project>

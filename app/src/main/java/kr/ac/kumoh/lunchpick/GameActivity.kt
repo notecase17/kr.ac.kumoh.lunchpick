@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
@@ -25,8 +26,6 @@ class GameActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityGameBinding
     lateinit var mqueue: RequestQueue
-    var mResult: JSONObject? = null
-    var mArray = ArrayList<food>()
 
     override fun  onStop(){
         super.onStop()
@@ -34,57 +33,47 @@ class GameActivity : AppCompatActivity() {
     }
     fun requestMenu() {
         val url = "https://csproject-qejmc.run.goorm.io/Menu"
-        val request = JsonObjectRequest(
+        val request = JsonArrayRequest(
             Request.Method.GET,
             url, null,
             { response ->
-                mResult = response
-                makesel() },
+                for (i in 0 until response.length()){
+                    val item = response[i] as JSONObject
+                    val name = item.getString("menu")
+                    val ima = item.getString("image")
+                    val fd = food(name,ima)
+                    getit[i] = fd
+                }
+                makesel()
+            },
             { error ->
                 Toast.makeText(this,error.toString(),Toast.LENGTH_LONG).show()
             })
-
         request.tag = QUEUE_TAG
         mqueue.add(request)
     }
     fun requestStore() {
         val url = "https://csproject-qejmc.run.goorm.io/Restaurant"
-        val request = JsonObjectRequest(
+        val request = JsonArrayRequest(
             Request.Method.GET,
             url, null,
             { response ->
-                mResult = response
-                makestore() },
+                for (i in 0 until response.length()){
+                    val item = response[i] as JSONObject
+                    val name = item.getString("store_name")
+                    val ima = item.getString("store_image")
+                    val fd = food(name,ima)
+                    getit[i] = fd
+                }
+                makesel()
+            },
             { error ->
                 Toast.makeText(this,error.toString(),Toast.LENGTH_LONG).show()
             })
-
         request.tag = QUEUE_TAG
         mqueue.add(request)
     }
-    fun makestore() {
-        val items: JSONArray = mResult?.getJSONArray("menu_ID") ?: return
-        mArray.clear()
-        for (i in 0 until items!!.length()){
-            val item = items[i] as JSONObject
-            val name = item.getString("store_name")
-            val ima = item.getString("store_image")
-            mArray.add(food(name,ima))
-            getit[i] = mArray[i]
-        }
-    }
 
-    fun makesel() {
-        val items: JSONArray = mResult?.getJSONArray("menu_ID") ?: return
-        mArray.clear()
-        for (i in 0 until items!!.length()){
-            val item = items[i] as JSONObject
-            val name = item.getString("menu")
-            val ima = item.getString("image")
-            mArray.add(food(name,ima))
-            idnt[i] = mArray[i]
-        }
-    }
     val SERVER_URL = "https://csproject-qejmc.run.goorm.io/"
     var idnt = Array<food?>(32) {null}
     var getit = Array<food?>(999) {null}
@@ -92,27 +81,21 @@ class GameActivity : AppCompatActivity() {
     var c_count = 0
     var round = 0
     var n_round = 1
-    var size = 8
+    var size = 16
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mqueue = Volley.newRequestQueue(this)
-        requestStore()
-
         c_count = size
         round = size
 
-        for(i in 0 until size){
-            idnt[i] = getit[i]
+        val type = intent.getStringExtra("cupType")
+        when(type){
+            "menu"->{requestMenu()}
+            "restaurant"->{requestStore()}
         }
-
-        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.FirstImage)
-        binding.FItext.text = idnt[count++]!!.name
-        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.secondImage)
-        binding.SItext.text = idnt[count++]!!.name
-        binding.progressing.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
 
         binding.FirstImage.setOnClickListener {
             // Toast.makeText(this, binding.FItext.text.toString(), Toast.LENGTH_SHORT).show()
@@ -126,6 +109,17 @@ class GameActivity : AppCompatActivity() {
             idnt[c_count++]=fd
             click()
         }
+    }
+
+    fun makesel(){
+        for(i in 0 until size){
+            idnt[i] = getit[i]
+        }
+        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.FirstImage)
+        binding.FItext.text = idnt[count++]!!.name
+        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.secondImage)
+        binding.SItext.text = idnt[count++]!!.name
+        binding.progressing.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
     }
 
     fun click(){

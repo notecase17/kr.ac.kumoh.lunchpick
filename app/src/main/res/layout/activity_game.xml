@@ -17,7 +17,7 @@
             android:gravity="top|center_horizontal"
             />
 
-        <com.android.volley.toolbox.NetworkImageView
+        <ImageView
             android:id="@+id/FirstImage"
             android:layout_width="match_parent"
             android:layout_height="295dp"
@@ -31,7 +31,7 @@
             android:gravity="bottom|center_horizontal"
             android:text="name"/>
 
-        <com.android.volley.toolbox.NetworkImageView
+        <ImageView
             android:id="@+id/secondImage"
             android:layout_width="match_parent"
             android:layout_height="295dp"
