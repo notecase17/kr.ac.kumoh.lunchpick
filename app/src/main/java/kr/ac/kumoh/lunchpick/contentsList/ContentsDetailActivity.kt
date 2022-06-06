@@ -1,5 +1,7 @@
 package kr.ac.kumoh.lunchpick.contentsList
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -17,7 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kr.ac.kumoh.lunchpick.R
 import kr.ac.kumoh.lunchpick.databinding.ActivityContentsDetailBinding
 
-class ContentsDetailActivity : AppCompatActivity(), OnMapReadyCallback {
+class ContentsDetailActivity : AppCompatActivity() {
     lateinit var datas : ContentsModel
     private lateinit var binding: ActivityContentsDetailBinding
     private val menu: StoreViewModel by viewModels()
@@ -54,7 +56,16 @@ class ContentsDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         datas = intent.getParcelableExtra("data")!!
 
         menu.requestStoreMenuList(datas.storeId)
-        Toast.makeText(this,datas.image,Toast.LENGTH_SHORT).show()
+        //add point
+        binding.mapViewBtn.setOnClickListener {
+            val mapIntent: Intent = Uri.parse(
+                "geo:0,0?q=${datas.storeAddress}"
+            ).let { location ->
+                Intent(Intent.ACTION_VIEW, location)
+            }
+            startActivity(mapIntent)
+
+        }
 
         Glide.with(this).load("${SERVER_URL}images/${datas.image}").into(detail_store_image)
         detail_store_name.text = datas.storeName
@@ -62,18 +73,8 @@ class ContentsDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         detail_store_addr.text = datas.storeAddress
         detail_store_num.text = "가게 번호 : ${datas.storeNum}"
 
-        //맵 관련 추가
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map_view) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+
 
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(LatLng(0.0, 0.0))
-                .title("Marker")
-        )
-    }
 }
