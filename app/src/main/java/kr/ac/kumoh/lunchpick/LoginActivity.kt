@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
+import kr.ac.kumoh.lunchpick.sharedPreference.LocalUser
 import kr.ac.kumoh.lunchpick.databinding.ActivityLoginBinding
 import org.json.JSONObject
 

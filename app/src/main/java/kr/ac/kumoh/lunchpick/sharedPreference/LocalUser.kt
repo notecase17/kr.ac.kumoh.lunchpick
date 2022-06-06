@@ -1,4 +1,4 @@
-package kr.ac.kumoh.lunchpick.SharedPreference
+package kr.ac.kumoh.lunchpick.sharedPreference
 
 import android.app.Application
 

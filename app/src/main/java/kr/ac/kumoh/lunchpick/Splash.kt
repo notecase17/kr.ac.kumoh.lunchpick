@@ -1,6 +1,5 @@
 package kr.ac.kumoh.lunchpick
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,7 +7,7 @@ import android.os.Handler
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
+import kr.ac.kumoh.lunchpick.sharedPreference.LocalUser
 import kr.ac.kumoh.lunchpick.databinding.ActivitySplashBinding
 
 class Splash : AppCompatActivity() {
