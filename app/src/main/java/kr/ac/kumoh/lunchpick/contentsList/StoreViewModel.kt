@@ -70,7 +70,7 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
 
     }
     //추가
-    fun requestStoreMenuList() {
+    fun requestStoreMenuList(flag: Int) {
 
         val url = "https://csproject-qejmc.run.goorm.io/StoreMenu"
 
@@ -79,7 +79,7 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
             {
                 //Toast.makeText(getApplication(),it.toString(), Toast.LENGTH_LONG).show()
                 store.clear()
-                parseMenuJSON(it)
+                parseMenuJSON(it,flag)
                 storeMenuList.value = menu
             },
             {
@@ -105,17 +105,17 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
     //추가
-    private fun parseMenuJSON(items: JSONArray) {
-        var temp=3
+    private fun parseMenuJSON(items: JSONArray, flag : Int) {
         for (i in 0 until items.length()) {
             val item: JSONObject = items.getJSONObject(i)
-            if(temp == item.getInt("store_ID"))
+            if(flag == item.getInt("store_ID"))
             {
                 val m_id = item.getInt("storeMenu_ID")
                 val s_id = item.getInt("store_ID")
                 val name = item.getString("store_Menu")
                 val image = item.getString("image")
-                menu.add(MenusModel(m_id, s_id, name, image))
+                val price = item.getInt("price")
+                menu.add(MenusModel(m_id, s_id, name, image, price))
             }
         }
     }

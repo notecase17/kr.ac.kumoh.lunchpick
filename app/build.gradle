@@ -61,5 +61,8 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_version"
     //slidingpanel
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
+    //구글맵
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
 
 }

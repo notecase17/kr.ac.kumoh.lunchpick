@@ -9,10 +9,15 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kr.ac.kumoh.lunchpick.R
 import kr.ac.kumoh.lunchpick.databinding.ActivityContentsDetailBinding
 
-class ContentsDetailActivity : AppCompatActivity() {
+class ContentsDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var datas : ContentsModel
     private lateinit var binding: ActivityContentsDetailBinding
     private val menu: StoreViewModel by viewModels()
@@ -37,7 +42,6 @@ class ContentsDetailActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         })
 
-        menu.requestStoreMenuList()
 
         val SERVER_URL = "https://csproject-qejmc.run.goorm.io/"
         val detail_store_image = findViewById<ImageView>(R.id.DetailImage)
@@ -49,6 +53,7 @@ class ContentsDetailActivity : AppCompatActivity() {
 
         datas = intent.getParcelableExtra("data")!!
 
+        menu.requestStoreMenuList(datas.storeId)
         Toast.makeText(this,datas.image,Toast.LENGTH_SHORT).show()
 
         Glide.with(this).load("${SERVER_URL}images/${datas.image}").into(detail_store_image)
@@ -56,5 +61,19 @@ class ContentsDetailActivity : AppCompatActivity() {
         detail_store_name2.text = datas.storeName
         detail_store_addr.text = datas.storeAddress
         detail_store_num.text = "가게 번호 : ${datas.storeNum}"
+
+        //맵 관련 추가
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map_view) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(0.0, 0.0))
+                .title("Marker")
+        )
     }
 }

@@ -19,5 +19,6 @@ data class MenusModel (
         val storeMenuId : Int,
         val storeId: Int,
         val menuName : String ="",
-        val menuImage : String = ""
+        val menuImage : String = "",
+        val price : Int
 ) : Parcelable
