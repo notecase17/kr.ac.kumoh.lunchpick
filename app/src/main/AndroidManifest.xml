@@ -5,21 +5,24 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".SharedPreference.LocalUser"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LunchPick"
-        android:usesCleartextTraffic="true"
-        android:name=".SharedPreference.LocalUser">
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
         <activity
             android:name=".contentsList.ContentsDetailActivity"
             android:exported="false" />
         <activity
             android:name=".contentsList.ContentsListActivity"
             android:exported="false" />
-
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
@@ -39,10 +42,9 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".GameActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>

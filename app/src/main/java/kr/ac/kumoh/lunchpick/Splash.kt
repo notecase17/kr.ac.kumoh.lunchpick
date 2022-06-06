@@ -8,6 +8,7 @@ import android.os.Handler
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
 import kr.ac.kumoh.lunchpick.databinding.ActivitySplashBinding
 
 class Splash : AppCompatActivity() {
@@ -41,7 +42,12 @@ class Splash : AppCompatActivity() {
 
         val handler: Handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent: Intent
+            if (LocalUser.prefs.getBool("logon", false)){
+                intent = Intent(this, MainActivity::class.java)
+            } else {
+                intent = Intent(this, LoginActivity::class.java)
+            }
             startActivity(intent)
             finish()
         }, 3000)

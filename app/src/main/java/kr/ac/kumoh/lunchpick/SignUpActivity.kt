@@ -1,6 +1,5 @@
 package kr.ac.kumoh.lunchpick
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,19 +8,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
 import kr.ac.kumoh.lunchpick.databinding.ActivitySignUpBinding
-import org.json.JSONException
 import org.json.JSONObject
 
 class SignUpActivity : AppCompatActivity() {
-
-    private var isBlank = false
-    private var isPwSame = false
 
     private lateinit var userGender: String
 
@@ -35,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.spGender.adapter = ArrayAdapter<String>(this,
             android.R.layout.simple_spinner_dropdown_item,
             resources.getStringArray(R.array.gender))
+
         binding.spGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -63,21 +56,8 @@ class SignUpActivity : AppCompatActivity() {
             val userAge = binding.editAge.text.toString()
 
             if (signUpCheck(userId, userPw1, userPw2, userName, userAge)) {
-
-                //signupVolley(this, url, userId, userPw1, userName, userAge, userGender)
-
-                LocalUser.prefs.setString("id", userId)
-                LocalUser.prefs.setString("pw", userPw1)
-                LocalUser.prefs.setString("name", userName)
-                LocalUser.prefs.setString("age", userAge)
-                LocalUser.prefs.setString("gender", userGender)
-
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-                Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
+                signupRequest(userId, userPw1, userName, userAge, userGender)
             }
-
         }
     }
 
@@ -95,76 +75,49 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this,"비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (!name.matches("^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}\$".toRegex())) {
+        if (!name.matches("^(?=.*[a-zA-Z0-9가-힣])[a-zA-Z0-9가-힣]{2,10}\$".toRegex())) {
             Toast.makeText(this, "닉네임은 한글, 영어, 숫자만 사용 가능 (2~10자)", Toast.LENGTH_SHORT).show()
             return false
         }
         if (age.toInt()<=0) {
             Toast.makeText(this, "올바르지 않은 나이입니다.", Toast.LENGTH_SHORT).show()
+            return false
         }
         return true
     }
 
-    private fun signupVolley(context: Context, url: String, id: String, pw: String, name: String, age: String, gender: String) {
-        val requestQueue = Volley.newRequestQueue(context)
+    private fun signupRequest(id: String, pw: String, name: String, age: String, gender: String) {
+        val url = "https://csproject-qejmc.run.goorm.io/signup"
 
-        val request: StringRequest = object: StringRequest(Method.POST, url,
-        Response.Listener { response ->
-            showJSONList(response)
-        },
-        Response.ErrorListener { error ->
-            Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show()
-        }) {
-            override fun getParams(): MutableMap<String, String> {
-                val params: MutableMap<String, String> = HashMap()
-                params["userid"] = id
-                params["userpw"] = pw
-                params["username"] = name
-                params["userage"] = age
-                params["usergender"] = gender
+        val param = JSONObject()
+        param.put("user_ID", id)
+        param.put("user_PW", pw)
+        param.put("user_mail", "@")
+        param.put("user_name",name)
+        param.put("user_gender", gender)
+        param.put("user_age", age.toInt())
+        param.put("user_isStore", "")
 
-                return params
-            }
-        }
-        requestQueue.add(request)
-    }
-
-    fun showJSONList(response: String) {
-        try {
-            Log.e("TAG",response)
-            val jsonObject = JSONObject(response)
-            jsonObject.let {
-                if(it.getString("userinfo") == null) {
-                    showAlert(it.getString("result").toString(), it.getString("message").toString())
-                } else {
-                    if(it.getString("result").toString().equals("success")){
-                        val jsonInfo = JSONObject(it.getString("userinfo").toString())
-                        jsonInfo.let{
-                            // Preference 에 대한 정보 기록은 생략한다.
-                            startActivity(Intent(this,MainActivity::class.java))
-                        }
-                    }
+        val request = JsonObjectRequest(
+            Request.Method.POST,
+            url,
+            param,
+            {
+                val response = it.getString("result")
+                if (response=="fail"){
+                    Toast.makeText(this, "중복되는 아이디입니다.", Toast.LENGTH_SHORT).show()
                 }
+                if (response=="success"){
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
+                }
+            },
+            {
+                Log.e("volley", "failed")
             }
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-    }
-
-    companion object {
-
-        var context: Context? = null
-
-        fun showAlert(title: String, message: String) {
-            val builder = context?.let {
-                AlertDialog.Builder(it)
-                    .setTitle(title)
-                    .setMessage(message)
-                    .setCancelable(false)
-                    .setPositiveButton("OK") { dialog, id -> dialog.dismiss() }
-            }
-            val alert = builder!!.create()
-            alert.show()
-        }
+        )
+        VolleySingleton.getInstance(this).addToRequestQueue(request)
     }
 }
