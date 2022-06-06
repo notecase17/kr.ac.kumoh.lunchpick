@@ -73,9 +73,9 @@ class LoginActivity : AppCompatActivity() {
                 }
                 if (response=="success"){
                     Toast.makeText(this, "환영합니다", Toast.LENGTH_SHORT).show()
-                    //  로그온 상태 저장
+
+                    //  로그온 상태, id, pw 저장
                     LocalUser.prefs.setBool("logon", true)
-                    //  id, pw 저장
                     LocalUser.prefs.setString("id", id)
                     LocalUser.prefs.setString("pw", pw)
 

@@ -43,7 +43,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvLogOut.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+
+            //  로그온 상태, id, pw 초기화
             LocalUser.prefs.setBool("logon", false)
+            LocalUser.prefs.setString("id", "")
+            LocalUser.prefs.setString("pw", "")
+
             finish()
         }
     }
