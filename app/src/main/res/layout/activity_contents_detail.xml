@@ -34,11 +34,13 @@
 
         <Button
             android:id="@+id/map_view_btn"
+            android:background="#FFFFFF"
             android:text="지도 앱으로 이동"
+            android:textSize="40dp"
+            android:fontFamily="casual"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="480dp"
-            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/DetailName" />
@@ -52,6 +54,7 @@
 
         <ImageView
             android:id="@+id/DetailImage"
+            android:src="@drawable/lunchpick_center_logo"
             android:layout_width="320dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
