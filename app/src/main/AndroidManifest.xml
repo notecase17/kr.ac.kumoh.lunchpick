@@ -14,7 +14,10 @@
         android:theme="@style/Theme.LunchPick"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MyPageActivity"
+            android:name=".MyPage.MyListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPage.MyPageActivity"
             android:exported="false" />
         <activity
             android:name=".contentsList.ContentsDetailActivity"

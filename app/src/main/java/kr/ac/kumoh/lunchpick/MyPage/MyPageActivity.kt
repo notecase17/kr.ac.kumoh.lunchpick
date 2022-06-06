@@ -1,4 +1,4 @@
-package kr.ac.kumoh.lunchpick
+package kr.ac.kumoh.lunchpick.MyPage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
+import kr.ac.kumoh.lunchpick.VolleySingleton
 import kr.ac.kumoh.lunchpick.databinding.ActivityMyPageBinding
 import org.json.JSONArray
 import org.json.JSONObject

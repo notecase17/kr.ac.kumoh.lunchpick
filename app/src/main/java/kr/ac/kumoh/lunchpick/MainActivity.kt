@@ -3,6 +3,7 @@ package kr.ac.kumoh.lunchpick
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kr.ac.kumoh.lunchpick.MyPage.MyPageActivity
 import kr.ac.kumoh.lunchpick.SharedPreference.LocalUser
 import kr.ac.kumoh.lunchpick.databinding.ActivityMainBinding
 
