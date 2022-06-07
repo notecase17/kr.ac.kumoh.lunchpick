@@ -97,17 +97,23 @@ class GameActivity : AppCompatActivity() {
             "restaurant"->{requestStore()}
         }
 
-        binding.FirstImage.setOnClickListener {
+        binding.btnFoodImg1.setOnClickListener {
             // Toast.makeText(this, binding.FItext.text.toString(), Toast.LENGTH_SHORT).show()
             val fd = idnt[count-2]
             idnt[c_count++]=fd
             click()
         }
-        binding.secondImage.setOnClickListener {
+        binding.btnFoodImg2.setOnClickListener {
             //Toast.makeText(this, binding.SItext.text.toString(), Toast.LENGTH_SHORT).show()
             val fd = idnt[count-1]
             idnt[c_count++]=fd
             click()
+        }
+        binding.ivFavorite1.setOnClickListener {
+
+        }
+        binding.ivFavorite2.setOnClickListener {
+
         }
     }
 
@@ -115,11 +121,11 @@ class GameActivity : AppCompatActivity() {
         for(i in 0 until size){
             idnt[i] = getit[i]
         }
-        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.FirstImage)
-        binding.FItext.text = idnt[count++]!!.name
-        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.secondImage)
-        binding.SItext.text = idnt[count++]!!.name
-        binding.progressing.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
+        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.btnFoodImg1)
+        binding.tvFoodName1.text = idnt[count++]!!.name
+        Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.btnFoodImg2)
+        binding.tvFoodName2.text = idnt[count++]!!.name
+        binding.tvWorldcupRound.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
     }
 
     fun click(){
@@ -135,21 +141,22 @@ class GameActivity : AppCompatActivity() {
             finish()
         }
         else{
-            Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.FirstImage)
-            binding.FItext.text = idnt[count++]!!.name
-            Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.secondImage)
-            binding.SItext.text = idnt[count++]!!.name
+            Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.btnFoodImg1)
+            binding.tvFoodName1.text = idnt[count++]!!.name
+            Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.btnFoodImg2)
+            binding.tvFoodName2.text = idnt[count++]!!.name
             when (round) {
                 4 -> {
-                    binding.progressing.text = "준결승 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
+                    binding.tvWorldcupRound.text = "준결승 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
                 }
                 2 -> {
-                    binding.progressing.text = "결승"
+                    binding.tvWorldcupRound.text = "결승"
                 }
                 else -> {
-                    binding.progressing.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
+                    binding.tvWorldcupRound.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
                 }
             }
+            binding.progressBar.progress = (n_round/(round/2))*100
         }
     }
 }

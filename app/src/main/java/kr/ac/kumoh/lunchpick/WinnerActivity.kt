@@ -19,16 +19,13 @@ class WinnerActivity : AppCompatActivity() {
         val intent: Intent = intent
         val fd :food = intent.getSerializableExtra("winner") as food
 
-        binding.winnerFoodName.text = "우    \"" + fd!!.name + "\"    승"
-        Glide.with(this).load("${url}images/${fd!!.ima}").into(binding.WFimage)
-        binding.WFText.text = fd!!.name
+        binding.ivFoodname.text = fd.name
+        Glide.with(this).load("${url}images/${fd!!.ima}").into(binding.ivFoodImg)
 
-        binding.WFR.setOnClickListener {
+        binding.FindRestaurant.setOnClickListener {
             val intent = Intent(this, ContentsListActivity::class.java)
             startActivity(intent)
             finish()
         }
-
-
     }
 }
