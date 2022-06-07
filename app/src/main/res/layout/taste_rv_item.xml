@@ -21,17 +21,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_FoodName"
-            android:text="음식 이름"
-            android:textSize="20sp"
-            android:textColor="#0F0F0F"
-            android:layout_marginTop="33dp"
+            android:id="@+id/tvItemName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="item name"
+            android:textColor="#0F0F0F"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/deleteBtn"
+        android:id="@+id/btnDeleteItem"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center"

@@ -1,5 +1,6 @@
 package kr.ac.kumoh.lunchpick.mypage
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,6 +45,11 @@ class MyPageActivity : AppCompatActivity() {
                 binding.editNewPw.setText("")
                 LocalUser.prefs.setString("pw", newPw)
             }
+        }
+
+        binding.btnList.setOnClickListener {
+            val intent = Intent(this, MyListActivity::class.java)
+            startActivity(intent)
         }
     }
 
