@@ -9,6 +9,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import kr.ac.kumoh.lunchpick.VolleySingleton
 import kr.ac.kumoh.lunchpick.contentsList.ContentsModel
 import kr.ac.kumoh.lunchpick.contentsList.StoreViewModel
@@ -95,7 +96,7 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
                 Log.e("volley", "failed")
             }
         )
-        request.tag = StoreViewModel.QUEUE_TAG
+        request.tag = QUEUE_TAG
         mQueue.add(request)
     }
 
@@ -112,5 +113,29 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
             if (type == "Like") like.add(ItemModel(itemName, isStore, itemID, itemImage))
             if (type == "Dislike") dislike.add(ItemModel(itemName, isStore, itemID, itemImage))
         }
+    }
+
+    fun requestDeleteItem(category: String, item_id: Int) {
+        val url = "https://csproject-qejmc.run.goorm.io/deleteTasteItem"
+
+        val param = JSONObject()
+        param.put("category", category)
+        param.put("user_id", LocalUser.prefs.getString("id", ""))
+        param.put("item_id", item_id.toString())
+
+        val request = JsonObjectRequest(
+            Request.Method.POST,
+            url,
+            param,
+            {
+                val response = it.getString("result")
+                Log.e("volley", response)
+            },
+            {
+                Log.e("volley", "failed")
+            }
+        )
+        request.tag = QUEUE_TAG
+        mQueue.add(request)
     }
 }

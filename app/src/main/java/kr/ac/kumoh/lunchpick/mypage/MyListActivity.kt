@@ -2,11 +2,17 @@ package kr.ac.kumoh.lunchpick.mypage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import kr.ac.kumoh.lunchpick.VolleySingleton
 import kr.ac.kumoh.lunchpick.databinding.ActivityMyListBinding
+import kr.ac.kumoh.lunchpick.sharedPreference.LocalUser
+import org.json.JSONObject
 
 class MyListActivity : AppCompatActivity() {
 
@@ -56,10 +62,5 @@ class MyListActivity : AppCompatActivity() {
         winner.requestItemList("Winner")
         like.requestItemList("Like")
         dislike.requestItemList("Dislike")
-
-    }
-
-    private fun adapterOnClick(item: ItemModel): Unit {
-        Toast.makeText(this, item.name, Toast.LENGTH_SHORT).show()
     }
 }
