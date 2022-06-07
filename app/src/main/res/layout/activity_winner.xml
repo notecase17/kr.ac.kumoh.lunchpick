@@ -28,7 +28,7 @@
             android:layout_height="350dp"
             android:layout_gravity="center"
             android:elevation="40dp"
-            android:background="@drawable/whiteBox_round"/>
+            />
         <ImageView
             android:id="@+id/iv_foodImg"
             android:layout_width="268dp"
@@ -51,7 +51,7 @@
         android:id="@+id/FindRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:background="@drawable/whiteBox_round"
+
         android:elevation="30dp"
         android:textColor="#0F0F0F"
         android:textSize="30sp"
