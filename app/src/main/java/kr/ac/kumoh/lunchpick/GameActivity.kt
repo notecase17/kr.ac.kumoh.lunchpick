@@ -85,6 +85,7 @@ class GameActivity : AppCompatActivity() {
     var n_round = 1
     var size = 16
     var i = true
+    var j = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,22 +117,24 @@ class GameActivity : AppCompatActivity() {
             if(i){
                 binding.ivFavorite1.setImageResource(R.drawable.ic_baseline_star_24)
                 i = false
-                //Toast.makeText(this, i.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "즐겨찾기 등록!", Toast.LENGTH_SHORT).show()
             }
             else{
                 binding.ivFavorite1.setImageResource(R.drawable.ic_baseline_star_border_24)
                 i = true
-                //Toast.makeText(this, i.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "즐겨찾기 해제!", Toast.LENGTH_SHORT).show()
             }
         }
         binding.ivFavorite2.setOnClickListener {
-            if(i){
+            if(j){
                 binding.ivFavorite2.setImageResource(R.drawable.ic_baseline_star_24)
-                i=false
+                j=false
+                Toast.makeText(this, "즐겨찾기 등록!", Toast.LENGTH_SHORT).show()
             }
             else{
                 binding.ivFavorite2.setImageResource(R.drawable.ic_baseline_star_border_24)
-                i=true
+                j=true
+                Toast.makeText(this, "즐겨찾기 해제!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -178,7 +181,6 @@ class GameActivity : AppCompatActivity() {
                     binding.tvWorldcupRound.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
                 }
             }
-            binding.progressBar.progress = ((n_round/(round/2))*100)
         }
     }
 }
