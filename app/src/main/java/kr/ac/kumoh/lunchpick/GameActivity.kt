@@ -14,6 +14,8 @@ import kr.ac.kumoh.lunchpick.databinding.ActivityGameBinding
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.Serializable
+import java.lang.Math.*
+import kotlin.math.round
 
 data class food (
     val name: String,
@@ -82,6 +84,7 @@ class GameActivity : AppCompatActivity() {
     var round = 0
     var n_round = 1
     var size = 16
+    var i = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,10 +113,26 @@ class GameActivity : AppCompatActivity() {
             click()
         }
         binding.ivFavorite1.setOnClickListener {
-
+            if(i){
+                binding.ivFavorite1.setImageResource(R.drawable.ic_baseline_star_24)
+                i = false
+                //Toast.makeText(this, i.toString(), Toast.LENGTH_SHORT).show()
+            }
+            else{
+                binding.ivFavorite1.setImageResource(R.drawable.ic_baseline_star_border_24)
+                i = true
+                //Toast.makeText(this, i.toString(), Toast.LENGTH_SHORT).show()
+            }
         }
         binding.ivFavorite2.setOnClickListener {
-
+            if(i){
+                binding.ivFavorite2.setImageResource(R.drawable.ic_baseline_star_24)
+                i=false
+            }
+            else{
+                binding.ivFavorite2.setImageResource(R.drawable.ic_baseline_star_border_24)
+                i=true
+            }
         }
     }
 
@@ -128,6 +147,7 @@ class GameActivity : AppCompatActivity() {
         binding.tvWorldcupRound.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
     }
 
+
     fun click(){
         n_round++
         if(round<n_round*2){
@@ -141,6 +161,8 @@ class GameActivity : AppCompatActivity() {
             finish()
         }
         else{
+            binding.ivFavorite1.setImageResource(R.drawable.ic_baseline_star_border_24)
+            binding.ivFavorite2.setImageResource(R.drawable.ic_baseline_star_border_24)
             Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.btnFoodImg1)
             binding.tvFoodName1.text = idnt[count++]!!.name
             Glide.with(this).load("${SERVER_URL}images/${idnt[count]!!.ima}").into(binding.btnFoodImg2)
@@ -156,7 +178,7 @@ class GameActivity : AppCompatActivity() {
                     binding.tvWorldcupRound.text = round.toString() + "강 " + "( "+n_round.toString()+" / "+(round/2).toString()+" )"
                 }
             }
-            binding.progressBar.progress = (n_round/(round/2))*100
+            binding.progressBar.progress = ((n_round/(round/2))*100)
         }
     }
 }
